@@ -14,9 +14,16 @@ private:
 
     public:
         
+        // конструктор по умолчанию
         Painting () : title(), author(), year(), prices() {};
 
-        ~Painting() {};
+        // конструкто преобразования
+
+        Painting (string name_of_painting) : title(name_of_painting), author(), year(), prices() {
+
+        };
+
+        ~Painting() {}; // деструктор 
 
 
 
