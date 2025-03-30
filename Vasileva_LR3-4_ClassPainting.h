@@ -2,21 +2,7 @@
 #define VASILEVA_LR3_4_CLASSPAINTING_H
 
 
-#include <algorithm>
-#include <iostream>
-#include <algorithm>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <functional>
-#include <list>
-#include <deque>
-#include <map>
-#include <set>
-#include <stack>
-#include <numeric>
-using namespace std;
+#include <C:\\Users\\User\\Desktop\\ALL_LABS\\Laba3_4\\Vasileva_LR3-4_ClassPainting\\Vasileva_LR3-4_Methods.h>
 
 class Painting
 {
