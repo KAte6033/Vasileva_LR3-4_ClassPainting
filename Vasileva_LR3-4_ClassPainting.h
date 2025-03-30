@@ -19,9 +19,7 @@ private:
 
         // конструкто преобразования
 
-        Painting (string name_of_painting) : title(name_of_painting), author(), year(), prices() {
-
-        };
+        Painting (string name_of_painting);
 
         ~Painting() {}; // деструктор 
 
