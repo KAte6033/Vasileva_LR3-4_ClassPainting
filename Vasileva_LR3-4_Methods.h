@@ -16,6 +16,7 @@
 #include <stack>
 #include <numeric>
 #include <limits>
+#include <cmath>
 using namespace std;
 
 const int infinity = std::numeric_limits<int>::max();
@@ -106,6 +107,9 @@ function <void()> EnterUnsign (unsigned& varlink, string label){
         varlink = stoul(raw_input);
     };
 }
+
+Painting p1;
+
 
 
 

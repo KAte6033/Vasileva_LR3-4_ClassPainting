@@ -12,16 +12,26 @@ private:
     int year;
     vector <int> prices = {};
 
+    // int* prices {nullptr};
+
     public:
         
         // конструктор по умолчанию
-        Painting () : title(), author(), year(), prices() {};
+        Painting () : title("unknown"), author("anonim"), year(), prices() {
+            
+        };
 
         // конструкто преобразования
 
         Painting (string name_of_painting);
 
-        ~Painting() {}; // деструктор 
+        Painting (const Painting& other);
+
+        ~Painting() {
+        }; // деструктор 
+
+        // prices.clear
+
 
 
 
@@ -51,8 +61,13 @@ private:
         }
 
         void display() const;
+
+        // friend ostream& operator + (ostream& my_stream, const Painting& obj ){};
         
 };
+
+
+
 
 // Vasileva_LR3-4_ClassPainting::Vasileva_LR3-4_ClassPainting(/* args */)
 // {

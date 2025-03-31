@@ -7,9 +7,11 @@ struct MenuItem
     function <void()> action; // действие, выполняемое при выборе пункта
 };
 
+
+
 int main() {
     map<int, MenuItem> menu = {
-        // {1, {"Вывести список автобусов для заданного номера маршрута;",  createSBusesFromFile(FNAME1)} }, //+
+        // {1, {"Тест дисплэй",  } }, //+
         // {2, {"Вывести базу данных", printDatabase}}, //+
         // {3, {"Добавить автобус", addBusToDB}}, //+
         // {4, {"Найти все автобусы по маршруту", findBusesByRoute}},
