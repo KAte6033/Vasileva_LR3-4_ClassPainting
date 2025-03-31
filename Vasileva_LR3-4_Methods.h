@@ -124,6 +124,24 @@ void createObjPreWithVector(){
     p2.display();
 }
 
+Painting p4;
+void Vvesti(){
+    cout << "Введите объект класса: " << endl;
+    cin >> p4;
+
+}
+
+void Vivisti (){
+    cout << p4; 
+}
+
+
+
+void Vivesti_copy (){
+    Painting p5{p4};
+    cout << p5;
+}
+
 // void Disp1 () {
 //     p1.display();
 // }

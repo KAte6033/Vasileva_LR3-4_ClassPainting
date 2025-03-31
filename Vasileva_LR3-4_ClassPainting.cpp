@@ -5,6 +5,7 @@
 // #include "Vasileva_LR3-4_ClassPainting.h"
 
 
+// конструктор по умолчанию
 Painting :: Painting () 
 {
     title = "unknown";
@@ -14,7 +15,7 @@ Painting :: Painting ()
 
     prices.resize(10, 0);
 
-    generate(prices.begin(), prices.end(), []() { return rand() % (1000000 - 10000 + 1) + 10000; });
+    generate(prices.begin(), prices.end(), []() { return rand() % (100000 - 10000 + 1) + 10000; });
 
     // for (int i = 0 ; i < 10; i++){
     //     prices[i] = rand() % (1000000 - 10000 + 1) + 10000;
@@ -36,13 +37,31 @@ Painting :: Painting (string name_of_painting) : title(name_of_painting), author
 };
 
 
-// конструктор параметезированный 
+// конструктор параметезированный  делегирующий
 
 Painting :: Painting (string name_painting, const vector <int> price) : Painting(name_painting)
 {
     set_prices(price);
 
 };
+
+// конструктор копирования
+
+Painting :: Painting (const Painting& other) :  prices(other.prices)
+{
+    title = "unknown";
+    author = "anonim";
+
+    year = rand() % (2001 - 1600 + 1) + 1600;
+
+};
+
+// Painting :: Painting (const Painting& other) :  prices(other.prices) 
+// {};
+
+
+// Painting :: Painting (const Painting& other) :  title(other.title), author(other.author), year(other.year), prices(other.prices) 
+// {};
 
 // Painting :: Painting (string name_painting, string name_author, int yea_r, const vector <int> price) : Painting(name_painting)
 // {
@@ -73,6 +92,32 @@ void Painting :: display() const {
     
 };
 
+ostream& operator << (ostream& my_stream, const Painting& obj ){
+
+    // string st;
+    // string title;
+    // string author;
+    // string year;
+    // string vector_size;
+    // int vec_sz;
+    // vector <int> prices = {};
+
+    my_stream << "Title: " << obj.title << ", Author's name: " << obj.author << ", Year: " << obj.year 
+    << ", Prices: ";
+    
+    for (int i = 0; i < obj.prices.size(); i ++){
+        cout << obj.prices[i];
+
+        if ( i != obj.prices.size() - 1){
+            cout << ", ";
+        }
+    }
+
+    cout << endl;
+
+    return my_stream;
+};
+
 
 istream& operator >> (istream& my_stream, Painting& obj)
 {
@@ -83,7 +128,7 @@ istream& operator >> (istream& my_stream, Painting& obj)
     string vector_size;
     int vec_sz;
     vector <int> prices = {};
-    
+
 
     cout << "Enter title: ";
     getline(my_stream, st);
@@ -115,12 +160,7 @@ istream& operator >> (istream& my_stream, Painting& obj)
 };
 
 
-void Vvesti(){
-    Painting p4;
-    cout << "Введите объект класса: " << endl;
-    cin >> p4;
 
-}
 
 // ostream& operator + (, const Painting& obj ){};
 

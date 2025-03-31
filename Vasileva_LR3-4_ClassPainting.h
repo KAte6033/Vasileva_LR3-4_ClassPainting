@@ -18,6 +18,7 @@
 #include <numeric>
 #include <limits>
 #include <cmath>
+#include <ctime>
 
 using namespace std;
 // #include <C:\\Users\\User\\Desktop\\ALL_LABS\\Laba3_4\\Vasileva_LR3-4_ClassPainting\\Vasileva_LR3-4_Methods.h>
@@ -43,12 +44,13 @@ private:
         Painting (string name_of_painting);
 
 
-        // делигирующий конструктор
+        // параметизированный делигирующий конструктор
         
         // создание картины, с заданным названием, автором, годом и массивом цен
         // Painting (string name_painting, string name_author, int yea_r, vector <int> price)
         // {};
 
+        // параметизированный делигирующий конструктор
         Painting (string name_painting, vector <int> price);
 
         // Painting (string name_painting, string name_author, int yea_r, vector <int> price) : Painting(name_painting)
@@ -56,10 +58,10 @@ private:
 
 
         // конструктор копирования
+        Painting (const Painting& other);
         // Painting (const Painting& other);
 
-        ~Painting() {
-        }; // деструктор 
+        ~Painting() {}; // деструктор 
 
         // prices.clear
 
@@ -105,6 +107,7 @@ private:
         void display() const;
 
         // friend ostream& operator + (ostream& my_stream, const Painting& obj ){};
+        friend ostream& operator << (ostream& my_stream, const Painting& obj );
         friend istream& operator >> (istream& my_stream, Painting& obj);
         
 };
