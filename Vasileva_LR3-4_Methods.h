@@ -97,6 +97,15 @@ function <void()> EnterUnsign (unsigned& varlink, string label){
 
 // Painting p1;
 
+
+// заполняем вектор с клавиатуры
+// vector<Bus> DB_Bus;
+// void printDatabase();
+
+// заполняем вектор с клавиатуры
+
+
+
 void createObjDefault (){
     Painting p1;
     p1.display();
@@ -106,6 +115,13 @@ void createObjDefault (){
 void createObjPre (){
     Painting p1 ("Cat");
     p1.display();
+}
+
+void createObjPreWithVector(){
+    vector <int> base = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    Painting p2("Dog", base);
+    p2.display();
 }
 
 // void Disp1 () {

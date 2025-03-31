@@ -13,8 +13,8 @@ int main() {
     map<int, MenuItem> menu = {
         {1, {"Тест дисплэй",  createObjDefault}}, //+
         {2, {"Test preobraz", createObjPre}}, //+
-        // {3, {"Добавить автобус", addBusToDB}}, //+
-        // {4, {"Найти все автобусы по маршруту", findBusesByRoute}},
+        {3, {"Test of name and vector", createObjPreWithVector}}, //+
+        {4, {"Тест перегруженного оператора >> ", Vvesti}},
         // {5, {"Вывести автобусы, у которох срок эксплуатации более 10 лет", Skoka_Let}},
         // {6, {"Вывести все автобусы, у которых пробег более 10000 км", MnogaKm}}
     };

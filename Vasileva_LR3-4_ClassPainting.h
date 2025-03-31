@@ -28,6 +28,8 @@ private:
     string title;
     string author;
     int year;
+
+    // unsigned raz = 0;
     vector <int> prices = {};
 
     // int* prices {nullptr};
@@ -37,11 +39,24 @@ private:
         // конструктор по умолчанию
         Painting();
 
-        // конструкто преобразования
-
+        // конструктор преобразования
         Painting (string name_of_painting);
 
-        Painting (const Painting& other);
+
+        // делигирующий конструктор
+        
+        // создание картины, с заданным названием, автором, годом и массивом цен
+        // Painting (string name_painting, string name_author, int yea_r, vector <int> price)
+        // {};
+
+        Painting (string name_painting, vector <int> price);
+
+        // Painting (string name_painting, string name_author, int yea_r, vector <int> price) : Painting(name_painting)
+        // {};
+
+
+        // конструктор копирования
+        // Painting (const Painting& other);
 
         ~Painting() {
         }; // деструктор 
@@ -72,6 +87,17 @@ private:
 
         }
 
+        // void set_prices ( unsigned razmer, vector <int>& PRICES ){
+        //     if (razmer < PRICES.size()){
+        //         prices.resize(razmer);
+        //         prices.assign(PRICES.begin(), PRICES.begin() + razmer);
+        //     }
+        //     {
+        //         cerr << "Error" << endl;
+        //     }
+
+        // }
+
         vector <int> get_prices () const {
             return prices;
         }
@@ -79,6 +105,7 @@ private:
         void display() const;
 
         // friend ostream& operator + (ostream& my_stream, const Painting& obj ){};
+        friend istream& operator >> (istream& my_stream, Painting& obj);
         
 };
 
