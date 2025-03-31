@@ -1,22 +1,9 @@
 #ifndef VASILEVA_LR3_4_METHODS_H
 #define VASILEVA_LR3_4_METHODS_H
 
-#include <algorithm>
-#include <iostream>
-#include <algorithm>
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream>
-#include <functional>
-#include <list>
-#include <deque>
-#include <map>
-#include <set>
-#include <stack>
-#include <numeric>
-#include <limits>
-#include <cmath>
+
+#include "Vasileva_LR3-4_ClassPainting.h"
+
 using namespace std;
 
 const int infinity = std::numeric_limits<int>::max();
@@ -108,7 +95,24 @@ function <void()> EnterUnsign (unsigned& varlink, string label){
     };
 }
 
-Painting p1;
+// Painting p1;
+
+void createObjDefault (){
+    Painting p1;
+    p1.display();
+    // p1.display();
+}
+
+void createObjPre (){
+    Painting p1 ("Cat");
+    p1.display();
+}
+
+// void Disp1 () {
+//     p1.display();
+// }
+
+
 
 
 

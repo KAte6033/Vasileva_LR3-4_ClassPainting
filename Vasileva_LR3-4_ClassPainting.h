@@ -2,7 +2,25 @@
 #define VASILEVA_LR3_4_CLASSPAINTING_H
 
 
-#include <C:\\Users\\User\\Desktop\\ALL_LABS\\Laba3_4\\Vasileva_LR3-4_ClassPainting\\Vasileva_LR3-4_Methods.h>
+#include <algorithm>
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <sstream>
+#include <functional>
+#include <list>
+#include <deque>
+#include <map>
+#include <set>
+#include <stack>
+#include <numeric>
+#include <limits>
+#include <cmath>
+
+using namespace std;
+// #include <C:\\Users\\User\\Desktop\\ALL_LABS\\Laba3_4\\Vasileva_LR3-4_ClassPainting\\Vasileva_LR3-4_Methods.h>
 
 class Painting
 {
@@ -17,9 +35,7 @@ private:
     public:
         
         // конструктор по умолчанию
-        Painting () : title("unknown"), author("anonim"), year(), prices() {
-            
-        };
+        Painting();
 
         // конструкто преобразования
 

@@ -1,5 +1,5 @@
-#include <C:\\Users\\User\\Desktop\\ALL_LABS\\Laba3_4\\Vasileva_LR3-4_ClassPainting\\Vasileva_LR3-4_Methods.h>
-
+// #include <C:\\Users\\User\\Desktop\\ALL_LABS\\Laba3_4\\Vasileva_LR3-4_ClassPainting\\Vasileva_LR3-4_Methods.h>
+#include "Vasileva_LR3-4_ClassPainting.cpp"
 
 struct MenuItem
 {
@@ -11,8 +11,8 @@ struct MenuItem
 
 int main() {
     map<int, MenuItem> menu = {
-        // {1, {"Тест дисплэй",  } }, //+
-        // {2, {"Вывести базу данных", printDatabase}}, //+
+        {1, {"Тест дисплэй",  createObjDefault}}, //+
+        {2, {"Test preobraz", createObjPre}}, //+
         // {3, {"Добавить автобус", addBusToDB}}, //+
         // {4, {"Найти все автобусы по маршруту", findBusesByRoute}},
         // {5, {"Вывести автобусы, у которох срок эксплуатации более 10 лет", Skoka_Let}},
