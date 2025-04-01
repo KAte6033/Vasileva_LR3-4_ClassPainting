@@ -110,13 +110,109 @@ private:
 
         void display() const;
 
+        // Painting Painting :: NewNameOfOperationg(const Painting& other) const;
+
+        // это мне надо, чтобы потом использовать в операторах
+        pair<string, string> CombineNameAndAuthor(const Painting& other) const;
+
+        // это мне надо чтобы считать среднее арифмитическое 
+        int AveragePrice() const;
+
         Painting operator + (const Painting& other) const;
+
+        Painting operator - (const Painting& other) const;
+
+        Painting operator * (const int x) const;
 
         // friend ostream& operator + (ostream& my_stream, const Painting& obj ){};
         friend ostream& operator << (ostream& my_stream, const Painting& obj );
         friend istream& operator >> (istream& my_stream, Painting& obj);
         
 };
+
+
+
+
+
+
+
+// Painting Painting :: operator + (const Painting& other) const 
+// {
+//     vector<int> result_prices = prices;
+//     result_prices.insert(result_prices.end(), other.prices.begin(), other.prices.end());
+
+//     string name = "\"" + title + "\" and \"" + other.title + "\"";
+//     string authors = author + " and " + other.author;
+    
+
+
+//     return Painting(name, authors, -1, result_prices);
+    
+// };
+
+// Painting Painting ::  operator - (const Painting& other) const 
+// {
+//     // среднюю разницу стоимости по формуле
+//     // sr_zn (pfinting1.prices) - sr_zn (pfinting2.prices)
+//     // или создать новый вектор с этими двумя средними значениями картин, 
+//     // слева стоимость средняя 1 картины
+//     // справа средняя стоимость второй картины 
+//     //  вернуть новый объект через конструктор преобразования
+//     // год = -1, название А + Б, автор А + Б, цены - вернуть новый веткор
+//     // со средними значениями.
+
+//     vector<int> result_prices;
+    
+//     int sum1 = 0;
+    
+//     if (prices.empty() ) {
+//         cout << "Vector is empty!" << endl;
+//     }
+
+//     else
+//     {
+        
+//         for (int price : prices) {
+//             sum1 += price;
+//         }
+
+//     }
+
+    
+//     int average1 = sum1 / prices.size();
+//     result_prices.push_back(average1);
+
+//     int sum2 = 0;
+
+//     if (other.prices.empty() ) {
+//         cout << "Vector is empty!" << endl;
+//     }
+
+//     else
+//     {
+//         for (int price : other.prices) {
+//             sum2 += price;
+//         }
+
+//     }
+
+//     int average2 = sum2 / other.prices.size();
+
+//     result_prices.push_back(average2);
+
+//     // vector<int> result_prices = prices;
+//     // result_prices.insert(result_prices.end(), other.prices.begin(), other.prices.end());
+
+//     string name = "\"" + title + "\" and \"" + other.title + "\"";
+//     string authors = author + " and " + other.author;
+    
+
+
+//     return Painting(name, authors, -1, result_prices);
+
+
+
+// };
 
 
 

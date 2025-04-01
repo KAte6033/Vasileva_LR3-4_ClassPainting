@@ -99,90 +99,133 @@ void Painting :: display() const {
 
     cout << endl;
     
+}; 
+
+
+// функция, которая преобразует названия картин и имена авторов для вывода + и -
+pair<string, string> Painting::CombineNameAndAuthor(const Painting& other) const {
+    string name = "\"" + title + "\" and \"" + other.title + "\"";
+    string authors = author + " and " + other.author;
+    return {name, authors};
+}
+
+// считает среднее арифмитическое 
+
+int Painting :: AveragePrice() const 
+{
+    if (prices.empty())
+    {
+        cout << "Vector is empty!";
+        return 0;
+    }
+    else
+    {
+        int sum = 0;
+        for (int p : prices) sum += p;
+        return sum / prices.size();
+    }
+    
 };
 
+
+
 Painting Painting :: operator + (const Painting& other) const 
-{
+{   
+    //
+    vector<int> result_prices = prices;
+    result_prices.insert(result_prices.end(), other.prices.begin(), other.prices.end());
+    //
 
-    string name;
-    string authors;
 
-    vector<int> result_prices ( (prices.size() + other.prices.size() ), 0);
-
-    size_t o = 0;
-    for (o = 0; o < prices.size(); o++)
-    {
-        result_prices[o] = prices[o];
-    }
-
-    for (int u = 0; u < other.prices.size(); u++, o++){
-        result_prices[o] = other.prices[u];
-    }
-
-    name = "\""+ title + "\"" + " and " + "\"" +  other.title + "\"";
-    authors = author + " and " + other.author;
+    // вернёт как переменные, т.е. распакует pair (auto [name, authors])
+    auto [name, authors] = CombineNameAndAuthor(other);
     
+    return Painting(name, authors, -1, result_prices);
+    
+};
 
+
+
+
+Painting Painting ::  operator - (const Painting& other) const 
+{
+    // среднюю разницу стоимости по формуле
+    // sr_zn (pfinting1.prices) - sr_zn (pfinting2.prices)
+    // или создать новый вектор с этими двумя средними значениями картин, 
+    // слева стоимость средняя 1 картины
+    // справа средняя стоимость второй картины 
+    //  вернуть новый объект через конструктор преобразования
+    // год = -1, название А + Б, автор А + Б, цены - вернуть новый веткор
+    // со средними значениями.
+
+    int avg1 = AveragePrice();
+    int avg2 = other.AveragePrice();
+
+    vector<int> result_prices = {avg1, avg2};
+
+    auto [name, authors] = CombineNameAndAuthor(other);
 
     return Painting(name, authors, -1, result_prices);
 
-        // return Painting( "sum of paintinges", result_prices); // возвращаем новый объект
-    
 };
+
+
+Painting Painting ::  operator * (const int x) const
+{
+    // умножение картины на число
+
+    vector<int> result_prices = prices;
+
+    for (int& val : result_prices) {
+        val *= x;
+    }
+
+
+    return Painting (title, author, year, result_prices);
+
+};
+
 
 
 
 ostream& operator << (ostream& my_stream, const Painting& obj ){
 
-    // string st;
-    // string title;
-    // string author;
-    // string year;
-    // string vector_size;
-    // int vec_sz;
-    // vector <int> prices = {};
-
     my_stream << "Title: " << obj.title << ", Author's name: " << obj.author << ", Year: " << obj.year 
     << ", Prices: ";
     
-    for (int i = 0; i < obj.prices.size(); i ++){
-        cout << obj.prices[i];
-
-        if ( i != obj.prices.size() - 1){
-            cout << ", ";
+    for (size_t i = 0; i < obj.prices.size(); ++i) {
+        my_stream << obj.prices[i];
+        if (i != obj.prices.size() - 1) {
+            my_stream << ", ";
         }
     }
 
-    cout << endl;
-
+    my_stream << std::endl;
     return my_stream;
 };
 
 
 istream& operator >> (istream& my_stream, Painting& obj)
 {
-    string st;
-    string title;
-    string author;
-    string year;
+    string helper;
     string vector_size;
     int vec_sz;
     vector <int> prices = {};
 
 
     cout << "Enter title: ";
-    getline(my_stream, st);
-    obj.title = st;
+    getline(my_stream, helper);
+    obj.title = helper;
     cout << endl;
 
     cout << "Enter author: ";
-    getline(my_stream, st);
-    obj.author = st;
+    getline(my_stream, helper);
+    obj.author = helper;
     cout << endl;
 
     cout << "Enter year: ";
-    getline(my_stream, st);
-    obj.year = stoi(st);
+    getline(my_stream, helper);
+    obj.year = stoi(helper);
     cout << endl;
 
     cout << "Enter size of vector: ";
@@ -193,16 +236,13 @@ istream& operator >> (istream& my_stream, Painting& obj)
 
     for (int i = vec_sz; i > 0; i-- ){
         cout << "Enter " << i << " price: ";
-        getline(my_stream, st);
-        obj.prices.push_back(stoi(st));
+        getline(my_stream, helper);
+        obj.prices.push_back(stoi(helper));
     }
     return my_stream;
 };
 
 
-
-
-// ostream& operator + (, const Painting& obj ){};
 
 
 

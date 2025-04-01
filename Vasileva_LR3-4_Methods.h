@@ -104,6 +104,11 @@ function <void()> EnterUnsign (unsigned& varlink, string label){
 
 // заполняем вектор с клавиатуры
 
+void Naming_Of_plus_minus (){
+    
+
+}
+
 
 
 void createObjDefault (){
@@ -148,6 +153,24 @@ void Sum_Paintings () {
     Painting pp = p00 + p4;
     cout << pp << endl;
 
+}
+
+void Difference_Paintings () {
+    vector <int> e = {14, 67, 42}; // 41
+    Painting ret ("Liza", e);
+    Painting p00{p4};
+    Painting pp = p00 - ret;
+    cout << pp << endl;
+
+}
+
+void Unoz () {
+    vector <int> e = {14, 67, 42}; // 41
+    Painting ret ("Liza", e);
+    int x = 3;
+    ret = ret * x;
+    cout << "Картина выросла в цене в " << x << " раза!";
+    cout << ret;
 }
 
 // void Disp1 () {
