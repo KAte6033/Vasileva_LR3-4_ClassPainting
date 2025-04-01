@@ -142,6 +142,14 @@ void Vivesti_copy (){
     cout << p5;
 }
 
+void Sum_Paintings () {
+
+    Painting p00{p4};
+    Painting pp = p00 + p4;
+    cout << pp << endl;
+
+}
+
 // void Disp1 () {
 //     p1.display();
 // }

@@ -16,7 +16,8 @@ int main() {
         {3, {"Test of name and vector", createObjPreWithVector}}, //+
         {4, {"Тест перегруженного оператора >> ", Vvesti}},
         {5, {"Вывести объект класса << ", Vivisti}},
-        {6, {"Вывести копию", Vivesti_copy}}
+        {6, {"Вывести копию", Vivesti_copy}},
+        {7, {"Вывести сумму двух картин", Sum_Paintings}},
     };
 
     int choice = 0;

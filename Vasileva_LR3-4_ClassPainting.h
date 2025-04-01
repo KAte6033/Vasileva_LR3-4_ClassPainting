@@ -50,6 +50,10 @@ private:
         // Painting (string name_painting, string name_author, int yea_r, vector <int> price)
         // {};
 
+        // параметезированный конструктор
+
+        Painting (string name_painting, string name_author, int year_of_painting, vector <int> price);
+
         // параметизированный делигирующий конструктор
         Painting (string name_painting, vector <int> price);
 
@@ -105,6 +109,8 @@ private:
         }
 
         void display() const;
+
+        Painting operator + (const Painting& other) const;
 
         // friend ostream& operator + (ostream& my_stream, const Painting& obj ){};
         friend ostream& operator << (ostream& my_stream, const Painting& obj );

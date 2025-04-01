@@ -27,6 +27,9 @@ Painting :: Painting ()
 
 };
 
+
+
+
 // конструктор преобразования реализация
 Painting :: Painting (string name_of_painting) : title(name_of_painting), author("unknown") {
     year = rand() % (2001 - 1600 + 1) + 1600;
@@ -36,6 +39,12 @@ Painting :: Painting (string name_of_painting) : title(name_of_painting), author
     generate(prices.begin(), prices.end(), []() { return rand() % (1000000 - 10000 + 1) + 10000; });
 };
 
+
+// конструктор параметизированный
+
+Painting :: Painting (string name_painting, string name_author, int year_of_painting, vector <int> price) 
+: title(name_painting), author(name_author), year(year_of_painting), prices(price) 
+{};
 
 // конструктор параметезированный  делегирующий
 
@@ -91,6 +100,37 @@ void Painting :: display() const {
     cout << endl;
     
 };
+
+Painting Painting :: operator + (const Painting& other) const 
+{
+
+    string name;
+    string authors;
+
+    vector<int> result_prices ( (prices.size() + other.prices.size() ), 0);
+
+    size_t o = 0;
+    for (o = 0; o < prices.size(); o++)
+    {
+        result_prices[o] = prices[o];
+    }
+
+    for (int u = 0; u < other.prices.size(); u++, o++){
+        result_prices[o] = other.prices[u];
+    }
+
+    name = "\""+ title + "\"" + " and " + "\"" +  other.title + "\"";
+    authors = author + " and " + other.author;
+    
+
+
+    return Painting(name, authors, -1, result_prices);
+
+        // return Painting( "sum of paintinges", result_prices); // возвращаем новый объект
+    
+};
+
+
 
 ostream& operator << (ostream& my_stream, const Painting& obj ){
 
