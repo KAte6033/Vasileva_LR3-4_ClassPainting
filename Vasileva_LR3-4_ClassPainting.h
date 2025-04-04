@@ -67,10 +67,6 @@ private:
 
         ~Painting() {}; // деструктор 
 
-        // prices.clear
-
-
-
 
         void set_title(const string &TITLE){
             title = TITLE;
@@ -93,16 +89,6 @@ private:
 
         }
 
-        // void set_prices ( unsigned razmer, vector <int>& PRICES ){
-        //     if (razmer < PRICES.size()){
-        //         prices.resize(razmer);
-        //         prices.assign(PRICES.begin(), PRICES.begin() + razmer);
-        //     }
-        //     {
-        //         cerr << "Error" << endl;
-        //     }
-
-        // }
 
         vector <int> get_prices () const {
             return prices;
@@ -123,6 +109,24 @@ private:
         Painting operator - (const Painting& other) const;
 
         Painting operator * (const int x) const;
+
+        bool operator < (const Painting& other) const;
+
+        bool operator > (const Painting& other) const;
+        
+
+        // ostream& operator < (const Painting& other) const;
+
+
+
+        Painting operator++(int);  // постфиксный инкремент
+        Painting& operator++();    // префисксный инкремент
+        Painting& operator--();       // префиксный декремент
+
+        int& operator [](size_t index);
+        const int& operator [](size_t index) const;
+
+        Painting& operator = (const Painting& other); 
 
         // friend ostream& operator + (ostream& my_stream, const Painting& obj ){};
         friend ostream& operator << (ostream& my_stream, const Painting& obj );

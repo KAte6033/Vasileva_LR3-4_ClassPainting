@@ -104,12 +104,6 @@ function <void()> EnterUnsign (unsigned& varlink, string label){
 
 // заполняем вектор с клавиатуры
 
-void Naming_Of_plus_minus (){
-    
-
-}
-
-
 
 void createObjDefault (){
     Painting p1;
@@ -173,9 +167,127 @@ void Unoz () {
     cout << ret;
 }
 
+void Increment ()
+{
+    p4++;
+    cout << p4;
+}
+
+
+void Decrement ()
+{
+    vector <int> e = {14, 3, 9};
+    Painting ret ("Liza", e);
+    --ret;
+    cout << ret;
+    --ret;
+    cout << ret;
+    --ret;
+    cout << ret;
+}
+
+void Skobki () 
+{
+    vector <int> ass = {1, 2, 3};
+
+    Painting p99 ("Salo", ass);
+
+    p99[2] = 11;
+    cout << p99;
+}
+
+void ReadSkobki ()
+{
+    vector <int> ass = {1, 2, 3};
+
+    Painting p99 ("Salo", ass);
+
+    p99[2] = 11;
+    cout << p99;
+    cout << p99[1];
+
+}
+
+void Prisvaivanie ()
+{
+    vector <int> ass = {1, 2, 3};
+    vector <int> bass = {4, 5, 6};
+
+    Painting p99 ("Salo", ass);
+    Painting p88 ("Tomato", bass);
+
+    p99 = p88;
+    cout << p99;
+}
 // void Disp1 () {
 //     p1.display();
 // }
+
+void PreIncrement ()
+{
+    vector <int> vec = {1, 2, 3};
+    Painting pre_inc ("Dom", vec);
+
+    cout << pre_inc;
+
+    ++pre_inc;
+
+    cout << pre_inc;
+}
+
+// void Sravnenie ()
+// {
+//     vector <int> price1 = {4,5,6};
+//     Painting year_menishe ("Loki", "Igor", 560, price1);
+
+//     vector <int> price2 = {7, 8, 9};
+//     Painting year_bolishe ("Tor", "Lana", 1560, price2);
+
+//     cout << year_menishe < year_bolishe;
+//     Painting new_paint =  year_menishe < year_bolishe;
+
+//     cout << new_paint;
+
+// }
+
+
+void Sravnenie_year ()
+{
+    vector <int> price1 = {4,5,6}; // 5
+    Painting year_menishe ("Loki", "Igor", 560, price1);
+
+    vector <int> price2 = {7, 8, 9}; // 8
+    Painting year_bolishe ("Tor", "Lana", 1560, price2);
+
+    if (year_menishe < year_bolishe) {
+        cout << "Картина Loki старше" << endl;
+    } else {
+        cout << "Картина Tor старше или того же года" << endl;
+    };
+
+}
+
+void Sravn_sr_price ()
+{
+    vector <int> price1 = {4,5,6}; // 5
+    Painting year_menishe ("Loki", "Igor", 560, price1);
+
+    vector <int> price2 = {7, 8, 9}; // 8
+    Painting year_bolishe ("Tor", "Lana", 1560, price2);
+
+    if (year_bolishe > year_menishe)
+    {
+        cout << "Tor стоит больше!";
+    }
+
+    else {
+        cout << "Loki стоит больше!";
+
+    };
+
+};
+
+
 
 
 

@@ -185,6 +185,110 @@ Painting Painting ::  operator * (const int x) const
 
 };
 
+bool Painting :: operator<(const Painting& other) const 
+{
+    return year < other.year;
+};
+
+bool Painting :: operator > (const Painting& other) const
+{
+    return AveragePrice() > other.AveragePrice();
+};
+
+// Painting Painting ::  operator < (const Painting& other) const 
+// {
+//     if (year < other.year) {
+//         return *this;        // текущая картина старше
+//     } else {
+//         return other;        // другая картина старше или одинаково старая
+//     }
+
+// };
+
+// Painting Painting::operator<(const Painting& other) const {
+//     if (year < other.year) {
+//         return *this;        // текущая картина старше
+//     } else {
+//         return other;        // другая картина старше или одинаково старая
+//     }
+// }
+
+Painting Painting :: operator++(int)
+{
+    // добовляет рандомную цену в конец вектор с ценами
+    prices.push_back(rand() % (50000 - 3000 + 1) + 3000);
+    return Painting(title, author, year, prices);
+    
+};
+
+
+Painting& Painting :: operator++() 
+{
+    // this-> prices.insert(prices.begin(), (rand() % (50000 - 3000 + 1) + 3000));
+    // добавляем рандомную цену в начло вектора цен
+    prices.insert(prices.begin(), (rand() % (50000 - 3000 + 1) + 3000));
+    return *this;
+
+}
+
+
+Painting& Painting :: operator--()
+{
+    size_t a = prices.size();
+    int index;
+
+    index = rand() % a;
+
+    if (index < a){
+        prices.erase(prices.begin() + index);
+        cout << "Удалён элемент с индексом: " << index << endl;
+    }
+
+    else
+    {
+        cout << "Индекс вне диапазона!" << endl;
+
+    }
+
+    return *this;
+    
+};
+
+int& Painting :: operator[](size_t index) {
+
+    return prices.at(index);
+    // безопасный доступ с проверкой границ
+};
+
+// const только для чтения
+const int& Painting :: operator[](size_t index) const 
+{
+    return prices.at(index);
+};
+
+Painting& Painting :: operator = (const Painting& other)
+{
+    if (this == &other){
+        return *this;
+    }
+
+    else 
+    {
+        title = other.title;
+        author = other.author;
+        year = other.year;
+        prices = other.prices;
+        return *this;
+    }
+}; 
+
+
+
+// Painting&  Painting :: operator--(int x)
+// {
+
+// }; 
+
 
 
 
