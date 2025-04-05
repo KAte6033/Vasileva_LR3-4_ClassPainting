@@ -5,6 +5,7 @@
 // #include "Vasileva_LR3-4_ClassPainting.h"
 
 
+
 // конструктор по умолчанию
 Painting :: Painting () 
 {
@@ -13,17 +14,12 @@ Painting :: Painting ()
 
     year = rand() % (2001 - 1600 + 1) + 1600;
 
-    prices.resize(10, 0);
+    generate_random_prices();
+    // prices.resize(10, 0);
 
-    generate(prices.begin(), prices.end(), []() { return rand() % (100000 - 10000 + 1) + 10000; });
+    // generate(prices.begin(), prices.end(), []() { return rand() % (100000 - 10000 + 1) + 10000; });
 
-    // for (int i = 0 ; i < 10; i++){
-    //     prices[i] = rand() % (1000000 - 10000 + 1) + 10000;
-    // }
-
-
-
-    // generate ()[];
+    // paintings.push_back(*this);
 
 };
 
@@ -34,36 +30,81 @@ Painting :: Painting ()
 Painting :: Painting (string name_of_painting) : title(name_of_painting), author("unknown") {
     year = rand() % (2001 - 1600 + 1) + 1600;
 
-    prices.resize(10, 0);
+    // prices.resize(10, 0);
 
-    generate(prices.begin(), prices.end(), []() { return rand() % (1000000 - 10000 + 1) + 10000; });
+    // generate(prices.begin(), prices.end(), []() { return rand() % (1000000 - 10000 + 1) + 10000; });
+
+    generate_random_prices();
+    // paintings.push_back(*this);
 };
+
+
 
 
 // конструктор параметизированный
 
 Painting :: Painting (string name_painting, string name_author, int year_of_painting, vector <int> price) 
 : title(name_painting), author(name_author), year(year_of_painting), prices(price) 
-{};
+{
+    paintings.push_back(*this);
+};
+
+
+// Конструктор преобразования года делигирующийся
+Painting :: Painting (int new_year) : title("unknown"), author("anonim"), year(new_year) 
+{
+    generate_random_prices();
+    paintings.push_back(*this);
+};
+
+// Конструктор делегирующий
+Painting :: Painting (string name_painting, int year_r) : Painting(year_r)
+{
+    set_title(name_painting);
+    
+
+};
 
 // конструктор параметезированный  делегирующий
-
 Painting :: Painting (string name_painting, const vector <int> price) : Painting(name_painting)
 {
     set_prices(price);
+    paintings.push_back(*this);
 
 };
+
+
+
+
+
+
+// старый конструктор копирования
+// Painting :: Painting (const Painting& other) :  prices(other.prices)
+// {
+//     title = "unknown";
+//     author = "anonim";
+
+//     year = rand() % (2001 - 1600 + 1) + 1600;
+
+// };
 
 // конструктор копирования
 
-Painting :: Painting (const Painting& other) :  prices(other.prices)
+Painting :: Painting (const Painting& other) :  title(other.title),
+    author(other.author),
+    year(other.year), // КОПИРУЕМ, а не создаём новый!
+    prices(other.prices)
+
+{};
+
+// генерирует вектор рандомных цен 
+void Painting :: generate_random_prices() 
 {
-    title = "unknown";
-    author = "anonim";
-
-    year = rand() % (2001 - 1600 + 1) + 1600;
-
-};
+    prices.resize(10, 0);
+    generate(prices.begin(), prices.end(), []() {
+        return rand() % (100000 - 10000 + 1) + 10000;
+    });
+}
 
 // Painting :: Painting (const Painting& other) :  prices(other.prices) 
 // {};
@@ -108,6 +149,16 @@ pair<string, string> Painting::CombineNameAndAuthor(const Painting& other) const
     string authors = author + " and " + other.author;
     return {name, authors};
 }
+
+
+// int generate_random_prices(const Painting& other)
+// {
+//     other.prices.resize(10, 0);
+//     generate(prices.begin(), prices.end(), []() {
+//         return rand() % (100000 - 10000 + 1) + 10000;
+//     });
+// }
+
 
 // считает среднее арифмитическое 
 
@@ -241,7 +292,7 @@ Painting& Painting :: operator--()
 
     if (index < a){
         prices.erase(prices.begin() + index);
-        cout << "Удалён элемент с индексом: " << index << endl;
+        cout << "Удалён элемент номер: " << index + 1 << endl;
     }
 
     else
@@ -345,6 +396,11 @@ istream& operator >> (istream& my_stream, Painting& obj)
     }
     return my_stream;
 };
+
+
+// вектор хранящий все объекты класса Painting
+vector<Painting> paintings;
+
 
 
 

@@ -43,6 +43,9 @@ private:
         // конструктор преобразования
         Painting (string name_of_painting);
 
+        // ещё один констурктор преобразлвания, чтобы делегирующий ссылался на него
+        Painting (int new_year);
+
 
         // параметизированный делигирующий конструктор
         
@@ -50,9 +53,12 @@ private:
         // Painting (string name_painting, string name_author, int yea_r, vector <int> price)
         // {};
 
-        // параметезированный конструктор
 
+        // параметезированный конструктор
         Painting (string name_painting, string name_author, int year_of_painting, vector <int> price);
+
+        // Конструктор делегирующий
+        Painting (string name_painting, int year_r);
 
         // параметизированный делигирующий конструктор
         Painting (string name_painting, vector <int> price);
@@ -64,6 +70,7 @@ private:
         // конструктор копирования
         Painting (const Painting& other);
         // Painting (const Painting& other);
+
 
         ~Painting() {}; // деструктор 
 
@@ -104,28 +111,42 @@ private:
         // это мне надо чтобы считать среднее арифмитическое 
         int AveragePrice() const;
 
-        Painting operator + (const Painting& other) const;
+        void generate_random_prices();
 
+        // int generate_random_prices(const Painting& other) {};
+        
+        // продемонстрировано
+        Painting operator + (const Painting& other) const; 
+
+        // продемонстрировано
         Painting operator - (const Painting& other) const;
 
+        // продемонстрировано
         Painting operator * (const int x) const;
 
+        // продемонстрировано
         bool operator < (const Painting& other) const;
 
+        // продемонстрировано
         bool operator > (const Painting& other) const;
         
-
-        // ostream& operator < (const Painting& other) const;
-
-
-
+        // продемонстрировано
         Painting operator++(int);  // постфиксный инкремент
+
+        // продемонстрировано
         Painting& operator++();    // префисксный инкремент
+
+        // продемонстрировано
         Painting& operator--();       // префиксный декремент
 
+
+        // продемонстрировано
         int& operator [](size_t index);
+
+        // продемонстрировано
         const int& operator [](size_t index) const;
 
+        // продемонстрировано
         Painting& operator = (const Painting& other); 
 
         // friend ostream& operator + (ostream& my_stream, const Painting& obj ){};
