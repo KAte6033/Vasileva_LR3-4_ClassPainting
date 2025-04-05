@@ -32,31 +32,6 @@ int main() {
         {19, {"Вывести цену", Display_price_index}},
         {20, {"Создать копию (=)", Equal_object}},
         {21, {"Создать копию (=)", Equal_object}},
-        
-        // {19, {"Вывести все объекты класса", Display_all}},
-        // {1, {"Тест дисплэй",  createObjDefault}}, //+
-        // {2, {"Test preobraz", createObjPre}}, //+
-        // {3, {"Test of name and vector", createObjPreWithVector}}, //+
-        // {4, {"Тест перегруженного оператора >> ", Vvesti}},
-        // {5, {"Вывести объект класса << ", Vivisti}},
-        // {6, {"Вывести копию", Vivesti_copy}},
-        // {7, {"Вывести сумму двух картин", Sum_Paintings}},
-        // {8, {"Вывести разность двух картин", Difference_Paintings}},
-        // {9, {"Умножение картины на число", Unoz}},
-        // {10, {"Инкремент", Increment}},
-        // {11, {"Декремент", Decrement}},
-        // {12, {"Декремент", Decrement}},
-        // {13, {"Скобки", Skobki}},
-        // {14, {"Скобки для чтения", ReadSkobki}},
-        // {15, {"Присваивание", Prisvaivanie}},
-        // {16, {"Префиксный инкремент", PreIncrement}},
-        // {17, {"Сравнение по году создания", Sravnenie_year}},
-        // {18, {"Сравнение по средней цене", Sravn_sr_price}},
-        // {19, {"Вывести все объекты класса", Display_all}},
-        
-
-        
-        
     };
 
     int choice = 0;
