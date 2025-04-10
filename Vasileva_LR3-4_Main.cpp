@@ -31,7 +31,7 @@ int main() {
         {18, {"Заменить цену", delete_index_price}},
         {19, {"Вывести цену", Display_price_index}},
         {20, {"Создать копию (=)", Equal_object}},
-        {21, {"Создать копию (=)", Equal_object}},
+        // {21, {"Создать копию (=)", Equal_object}},
     };
 
     int choice = 0;
