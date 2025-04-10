@@ -27,7 +27,7 @@ Painting :: Painting ()
 
 
 // конструктор преобразования реализация
-Painting :: Painting (string name_of_painting) : title(name_of_painting), author("unknown") {
+Painting :: Painting (const string& name_of_painting) : title(name_of_painting), author("unknown") {
     year = rand() % (2001 - 1600 + 1) + 1600;
 
     // prices.resize(10, 0);
@@ -61,7 +61,6 @@ Painting :: Painting (int new_year) : title("unknown"), author("anonim"), year(n
 Painting :: Painting (string name_painting, int year_r) : Painting(year_r)
 {
     set_title(name_painting);
-    
 
 };
 
@@ -100,7 +99,7 @@ Painting :: Painting (const Painting& other) :  title(other.title),
 // генерирует вектор рандомных цен 
 void Painting :: generate_random_prices() 
 {
-    prices.resize(10, 0);
+    prices.resize(rand() % 10 + 1, 0);
     generate(prices.begin(), prices.end(), []() {
         return rand() % (100000 - 10000 + 1) + 10000;
     });
@@ -363,36 +362,45 @@ ostream& operator << (ostream& my_stream, const Painting& obj ){
 istream& operator >> (istream& my_stream, Painting& obj)
 {
     string helper;
+    int help_me;
     string vector_size;
     int vec_sz;
     vector <int> prices = {};
 
 
-    cout << "Enter title: ";
-    getline(my_stream, helper);
+    // cout << "Enter title: ";
+    EnterStr(helper, "Enter title: ")();
+    // getline(my_stream, helper);
     obj.title = helper;
     cout << endl;
 
-    cout << "Enter author: ";
-    getline(my_stream, helper);
+    // cout << "Enter author: ";
+    EnterStr(helper, "Enter author: ")();
+    // getline(my_stream, helper);
     obj.author = helper;
     cout << endl;
 
-    cout << "Enter year: ";
-    getline(my_stream, helper);
-    obj.year = stoi(helper);
+    // cout << "Enter year: ";
+    EnterNumberBolsheZero(help_me, "Enter year: ")();
+    // getline(my_stream, helper);
+    // obj.year = stoi(helper);
+    obj.year = help_me;
     cout << endl;
 
-    cout << "Enter size of vector: ";
-    getline(my_stream, vector_size);
-    vec_sz = stoi(vector_size);
+    // cout << "Enter size of vector: ";
+    EnterNumberBolsheZero(help_me, "Enter size of vector: ")();
+    // getline(my_stream, vector_size);
+    // vec_sz = stoi(vector_size);
+    vec_sz = help_me;
 
     obj.prices.clear();
 
     for (int i = vec_sz; i > 0; i-- ){
-        cout << "Enter " << i << " price: ";
-        getline(my_stream, helper);
-        obj.prices.push_back(stoi(helper));
+        EnterNumber(help_me,"Enter price: ")();
+        // cout << "Enter " << i << " price: ";
+        // getline(my_stream, helper);
+        // obj.prices.push_back(stoi(helper));
+        obj.prices.push_back(help_me);
     }
     return my_stream;
 };

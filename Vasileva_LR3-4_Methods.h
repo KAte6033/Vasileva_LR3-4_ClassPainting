@@ -74,7 +74,7 @@ bool UserUnsig (string input){
     return true;
 }
 
-// ввод интовых чисел
+//ввод интовых чисел
 function <void()> EnterNumber (int& varlink, string label){
     return [&varlink, label](){
         string raw_input;
@@ -82,12 +82,48 @@ function <void()> EnterNumber (int& varlink, string label){
         getline(cin, raw_input);
 
         while (!UserInput(raw_input)){
+            cout << "Неккоректный ввод!" << endl;
             cout << label << " = ";
             getline(cin, raw_input);
         }
         varlink = stoi(raw_input);
     };
 }
+
+//ввод интовых чисел больше 0
+function <void()> EnterNumberBolsheZero (int& varlink, string label){
+    return [&varlink, label](){
+        string raw_input;
+        cout << label << " = ";
+        getline(cin, raw_input);
+
+        while (!UserInput(raw_input) || stoi(raw_input) < 1){
+            cout << "Неккоректный ввод!" << endl;
+            cout << label << " = ";
+            getline(cin, raw_input);
+        }
+        varlink = stoi(raw_input);
+    };
+}
+
+
+// function <void()> EnterNumber (int& varlink, string label){
+//     return [&varlink, label](){
+//         string raw_input;
+//         cout << label << " = ";
+//         getline(cin, raw_input);
+
+//         while (!UserInput(raw_input)){
+//             cout << label << " = ";
+//             getline(cin, raw_input);
+//         }
+
+//         while(stoi(raw_input) < 1){
+//             cout << "Неккоректный ввод!" << endl;
+//         }
+//         varlink = stoi(raw_input);
+//     };
+// }
 
 // ввод строк
 function <void()> EnterStr (string& varlink, string label){
@@ -133,7 +169,7 @@ void Default_constructor ()
 
 void Conversion_constructor ()
 {
-    Painting p2("Liza");
+    Painting p2 ("Liza");
     register_painting(p2);
 
     cout << "Объект класса, созданный конструктором преобразования: " << endl;
@@ -208,7 +244,7 @@ void Deleg__constructor ()
 
     // cout << p5;
 
-    Painting p5(1815);
+    Painting p5 =1815;
     cout << p5;
 
 
@@ -230,7 +266,7 @@ void Deleg_par_constructor ()
     string name = "Piponika";
 
     cout << name << endl;
-    cout << "Создадим объект класса с этими данными с помощью параметезированного делегирующего конструктора: " << endl;
+    cout << "Создадим объект класса с этими данными с помощью параметрезированного делегирующего конструктора: " << endl;
 
     // Painting p5(name, sold);
     // paintings.push_back(p5);
@@ -296,8 +332,13 @@ void multiplying_picture_by_number ()
     cout << "Картина: " << endl;
     cout << p13;
 
-    cout << "Умножим эту картину на число: " << endl;
-    cin >> chislo;
+    // cout << "Умножим эту картину на число: " << endl;
+
+
+    // контроль ввода число >= 1
+    EnterNumberBolsheZero(chislo,"Умножим эту картину на число: ")();
+
+    // cin >> chislo;
 
     Painting p14 = p13 * chislo;
     cout << "Результат: " << endl;

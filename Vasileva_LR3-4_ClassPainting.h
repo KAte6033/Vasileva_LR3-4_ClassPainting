@@ -41,7 +41,7 @@ private:
         Painting();
 
         // конструктор преобразования
-        Painting (string name_of_painting);
+        Painting (const string& name_of_painting);
 
         // ещё один констурктор преобразлвания, чтобы делегирующий ссылался на него
         Painting (int new_year);
