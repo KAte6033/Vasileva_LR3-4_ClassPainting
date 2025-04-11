@@ -454,10 +454,10 @@ void delete_index_price ()
 
     int x, y;
 
-    EnterNumber(x, "Введите порядковый номер цены, которую вы бы хотели заменить: ")();
+    EnterNumberBolsheZero(x, "Введите порядковый номер цены, которую вы бы хотели заменить: ")();
     x-=1;
 
-    EnterNumber(y, "Введите новую цену: ")();
+    EnterNumberBolsheZero(y, "Введите новую цену: ")();
     cout << endl;
 
     p22[x] = y;
